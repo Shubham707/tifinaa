@@ -1,0 +1,27 @@
+<?php 
+include'../config.php';
+print_r($_REQUEST);
+
+  echo $val=$_REQUEST['slider_id'];
+  echo $name=$_REQUEST['slider_name'];
+  echo $content=$_REQUEST['slider_content'];
+  /*if($_FILES['slider_image']['name'])
+  {
+    $image=rand(99999,10000).'-'.$_FILES['slider_image']['name'];
+    $loc=$_FILES['slider_image']['tmp_name'];
+    move_uploaded_file($loc,'../sliders/'.$image);
+  }
+  else{
+    $image=$_REQUEST['image'];
+  }
+  $sql="UPDATE `slider` SET `slider_name`='$name',`slider_image`='$image',`slider_content`='$content' WHERE slider_id='$val'";
+  $query=mysqli_query($db, $sql) or die(mysqli_error());
+  if($query)
+  {
+    ob_start();
+    header("Location:slider.php?msg=Slider Update successfull!");
+  } else {
+    $error="Slider Added Not successfull!";
+  }*/
+
+?>
