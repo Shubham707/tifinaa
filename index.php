@@ -1,6 +1,7 @@
 <?php
-include 'header.php';
 include'config.php';
+include 'header.php';
+
 ?>
 
             <!-- Slider Start -->
@@ -300,29 +301,4 @@ $("form#myform").submit(function(e) {
            }
          });
 });
-</script>
-<script type="text/javascript">
-function selectValue(erc)
-{
-  $('#otp_no').val(erc);
-  if( erc.length =='6' ){
-      $.ajax({
-           type: "POST",
-           url: 'order.php',
-           data: {'cus_otp':erc}, 
-           success: function(res)
-           {
-            if(res==1)
-            {
-              $('#successs').html('<span style="color:green">OTP number is successfull verified!</span>');
-                  $('#hiden').hide();
-            }else{
-               $('#successs').html('Otp no is wrong');
-            }
-           }
-         });
-  }
-  
-}
-
 </script>

@@ -1,4 +1,6 @@
-<?php  session_start();  ?>
+<?php  session_start();  
+include'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +29,7 @@
         <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="plugin/timepicki.css" rel="stylesheet" type="text/css"/>
         <!-- Switch Color Style css -->
-        <link href="#" data-style="styles" rel="stylesheet">
+       
         <style>
 * {
   box-sizing: border-box;
@@ -233,11 +235,36 @@ button:hover {
                             </div>
                             <!-- Main Menu End -->
                         </div>
+                        <?php if($_SESSION['user_mobile']){?>
+                        <div class="col-md-2 col-sm-12 col-xs-12 button-top ">
+                           <div id="menu"> 
+                                <nav class="navbar navbar-expand-md">
+                                    <div class="navbar-header">
+                                    <ul class="nav navbar-nav">
+                                      <li class="nav-item dropdown"><a href="#" class="dropdown-toggle btn btn-info p-3" data-toggle="dropdown">Account</a>
+                                                <div class="dropdown-menu">
+                                                    <div class="dropdown-inner">
+                                                        <ul class="list-unstyled">
+                                                            <li><a href="profile.php">Profile </a></li>
+                                                            <li><a href="logout.php">Logout </a></li>
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                        <?php } else{ ?>
                         <div class="col-md-2 col-sm-12 col-xs-12 button-top paddleft">
                             <a href="#" class="btn-primary btn" id="#empModal" data-toggle="modal" data-target="#empModal" >
-                            Book Your Thali</a>
+                            Login</a>
                            
                         </div>
+                        <?php }?>
+                        
                     </div>
                 </div>
             </header>

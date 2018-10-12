@@ -19,16 +19,16 @@ $data=json_decode($json,true);
 if($email!='' && $mobile!='' && $address!='' && $password!=''){
 	if($mobile && $email && $address && $password){
 		$pass=md5($password);
-		 $sql="SELECT * FROM customers WHERE cus_mobile='$mobile' AND password='$password'";
+		 $sql="SELECT * FROM customers WHERE cus_mobile='$mobile'";
 		 //$q="UPDATE `customers` SET `cus_otp`='$rand' WHERE  cus_mobile='$mobile'";
 		 mysqli_query($db,$q);
 		 $query=mysqli_query($db,$sql);
-	    $res=mysqli_fetch_assoc($query);
+	     $res=mysqli_fetch_assoc($query);
 		
 	      if($res['cus_mobile']==$mobile){
 	      	$message="Otp send successfull:".$rand;
 	       //sendSMS($message,$mobile);
-			echo json_encode(array('data'=>'Mobile No Already Exits!','status'=>true,));
+			echo json_encode(array('data'=>'Mobile No Already Exits!','statuscode'=>'400','status'=>true,));
 			}
 		  else{
 		  	$pass=md5($password);
@@ -37,10 +37,10 @@ if($email!='' && $mobile!='' && $address!='' && $password!=''){
 		    $message="Otp send successfull:".$rand;
 		   //sendSMS($message,$mobile); 
 		     if($query > 0){
-			echo json_encode(array('data'=>'Data saved successfully!','status'=>true,));
+			echo json_encode(array('data'=>'Data saved successfully!','statuscode'=>'200','status'=>true,));
 			}
 			else{
-				echo json_encode(array('data'=>'Customer details did not saved!','status'=>false,));
+				echo json_encode(array('data'=>'Customer details did not saved!','statuscode'=>'400','status'=>false,));
 			}
 			
 		}

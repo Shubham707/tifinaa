@@ -82,13 +82,13 @@ include'header.php';
                                         </div></td>  
                                <td>&#8377; <?php echo $values["item_price"]; ?></td>  
                                <td>&#8377; <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>  
-                               <td><button onclick="selectProduct('<?php echo $values["item_id"]; ?>');"><span class="text-danger">Remove</span></button></td>  
+                               <td><button onclick="selectProduct('<?php echo $values["item_sku"]; ?>');"><span class="text-danger">Remove</span></button></td>  
                           </tr>  
                           <?php  
                                     $total = $total + ($values["item_quantity"] * $values["item_price"]);  
                                }  
                           ?>  
-                          <tr>  
+                          <tr>
                                <td colspan="3" align="right">Total</td>  
                                <td align="right">&#8377; <input type="text" name="total_amount" value="<?php echo number_format($total, 2); ?>" size="2" id="total_amount" class="form-control" readonly  "/>
                                </td>  
@@ -99,6 +99,7 @@ include'header.php';
                           ?>  
                      </table>  
                 </div> 
+                <div class="text-left"><a class="btn btn-info" href="index.php">Select Thali</a></div>
                 </form> 
            </div>  
  <?php include'footer.php';?>
@@ -202,5 +203,6 @@ include'header.php';
            }
           });
         }
+        
     </script>
 

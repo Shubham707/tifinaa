@@ -18,15 +18,18 @@ if($email!='' && $password!='')
 	if($email && $password)
 	{
 		$pass=md5($password);
-	    $sql="SELECT `cus_id`,`cus_name`,`cus_email`,`password`,`cus_mobile` FROM `customers` WHERE cus_mobile='$email' AND password='$pass'"; 
+	    $sql="SELECT `cus_id`,`cus_name`,`cus_address`,`cus_email`,`password`,`cus_mobile` FROM `customers` WHERE cus_mobile='$email' AND password='$pass'"; 
 		$query=mysqli_query($db,$sql) or die('database not connect');
 		$data=mysqli_fetch_assoc($query);
 		$count = mysqli_num_rows($query);
 		if($count==1){
-			echo json_encode(array('status'=>true,'data'=>$data,));
+			echo json_encode(array('status'=>true, 'statuscode'=>'200','data'=>$data,'message'=>'success'));
 		}
 		else{
-			echo json_encode(array('status'=>false,'data'=>'email and password did not match!',));
+
+			$dt=array("cus_id"=>"","cus_name"=>"","cus_address"=>"","cus_email"=>"","password"=>"","cus_mobile"=>"",);
+
+			echo json_encode(array('status'=>false,'statuscode'=>'400','data'=>$dt,'message'=>'email and password did not match!'));
 		}
 	}
 	else {

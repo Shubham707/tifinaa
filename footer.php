@@ -1,4 +1,4 @@
-<div class="modal fade" id="empModal" role="dialog">
+            <div class="modal fade" id="empModal" role="dialog">
                 <div class="modal-dialog">
                 
                     <!-- Modal content-->
@@ -8,112 +8,23 @@
                           
                         </div>
                         <div class="modal-body">
-
+                       <form class="form-login" action="check_login.php" method="post" id="login-form">
+                       <div  id="successs"><h3>OTP Verify :</h3> 
+                       
+                       Please Check OTP NO Your Mobile</span>
+                       <p>
+                       <div id="otp"></div>
+                        <input type="text" placeholder="OTP Check" minlength="6" maxlength="6" class="cus_otp" name="cus_otp" id="cus_otp1" required onkeyup="selectValues(this.value);">
                         
-                       <!-- One "tab" for each step in the form: -->
-                       <?php
-                       //$mobile=@$_REQUEST['mobile'];
-                       /*include'config.php'; 
-                       $sql="SELECT * FROM customers where  otp_status=1";
-                       $query=mysqli_query($db,$sql) or die(mysqli_error());
-                       $data=mysqli_fetch_assoc($query);
-                       if($data){
-                        echo "OTP Varified";
-                       }else{*/
-                       ?>
-                       <form id="regForm" action="order.php" method="post">
-                       <div class="tab" id="successs"><h3>OTP Verify :</h3> 
-                       <span id="hiden">
-                      Sms Already Send!<br> Please Check OTP NO Your Mobile</span>
-                       <p><input type="text" placeholder="OTP Check" oninput="this.className = ''" minlength="6" maxlength="6" name="cus_otp" id="cus_otp" required onkeyup="selectValue(this.value);"></p>
-                       <span id="errorr"></span>
-                        
+                       </p>
+                        <p><input type="text" placeholder="ENTER YOUR MOBILE NO."  minlength="10" maxlength="10" name="mobile" id="mobile" required ></p>
+                         <p><button type="submit" class="btn btn-default" name="login_button" id="login_button">
+                            <span class="glyphicon glyphicon-log-in"></span>   Login
+                            </button></p>
+                       
                        </div>
                      
                        
-                     
-                       <div class="tab">
-                        <h3>Customer Details :</h3> 
-                         <p><input type="text" placeholder="Full name..." oninput="this.className = ''" name="fname" id="fname" required></p>
-                           <span style="color: red; text-align: center">Not mendatory Email Id</span>
-                          <p><input type="email" id="email" placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-                        
-                         <p><textarea placeholder="Street Address " oninput="this.className = ''" id="address" name="address" required></textarea></p>
-                         <p><input type="text" placeholder="City" oninput="this.className = ''" name="city" id="city" required style="width: 48%"> 
-                            <input type="text" id="state" placeholder=" State / Province" oninput="this.className = ''" name="state" required style="width: 46%; margin-left: 4%;">
-                          </p>
-                        <p><input type="text" id="country" placeholder=" Country" oninput="this.className = ''" name="country" required style="width: 48%">
-                          <input type="text" placeholder=" Postal / Zip Code" oninput="this.className = ''" id="zipcode" name="zipcode" required style="width: 46%; margin-left: 4%;"></p>
-                       </div>
-                       <div class="tab"><h3>Number of Thali Order :</h3>
-                         
-                         <p>
-                          <div class="handle-counter" id="handleCounter">                            
-                              <fieldset>
-                                <div class="form-group">
-                                  <label class="control-label">Special Thali :</label>
-                                  <input id="colorful" class="form-control" type="number" value="0" min="1" max="90" />
-                                </div>
-                              </fieldset>
-                           </div>
-                         </p>
-                         <p>
-                           <div class="handle-counter" id="handleCounter">
-                              <fieldset>
-                                <div class="form-group">
-                                  <label class="control-label">Basic Thali :</label>
-                                  <input id="colorful1" class="form-control" type="number" value="0" min="1" max="90" />
-                                </div>
-                              </fieldset>
-                            </div>
-                           </p>
-                           <p>
-                             <div class="handle-counter" id="handleCounter">
-                              <fieldset>
-                                <div class="form-group">
-                                  <label class="control-label">Medium Thali :</label>
-                                  <input id="colorful2" class="form-control" type="number" value="0" min="1" max="90" />
-                                </div>
-                              </fieldset>
-                            </div>
-                            </p>
-                          <!-- <span>Special Thali</span>
-                              <button class="counter-minus btn btn-primary">-</button>
-                              <input type="text" value="0" name="special" id="special">
-                              <button class="counter-plus btn btn-primary">+</button>
-                          </div>
-                          <br>
-                          <div class="handle-counter" id="handleCounter2">
-                          <span>Basic Thali</span>
-                              <button class="counter-minus btn btn-primary">-</button>
-                              <input type="text" value="0" name="basic" id="basic">
-                              <button class="counter-plus btn btn-primary">+</button>
-                          </div>
-                          <br>
-                          <div class="handle-counter" id="handleCounter3">
-                          <span>Medium Thali</span>
-                            <button class="counter-minus btn btn-primary">-</button>
-                              <input type="text" value="0" name="medium" id="medium">
-                              <button class="counter-plus btn btn-primary">+</button>
-                            </div>
-                          </p> -->
-                          <p><input type="date" placeholder="Order Date" oninput="this.className = ''" id="booking_date" name="booking_date" required></p>
-                         <p>
-                         <p><input type="time" placeholder="Order time" oninput="this.className = ''" id="booking_time" name="booking_time" required>
-                         <input type="hidden" id="otp_no" name="otp_no" value=""></p>
-                         </div>
-                        
-                       <div style="overflow:auto;">
-                         <div style="float:right;">
-                           <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                           <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                         </div>
-                       </div>
-                       <div style="text-align:center;margin-top:40px;">
-                         <span class="step"></span>
-                         <span class="step"></span>
-                         <span class="step"></span>
-                       </div>
                      </form>
                           
                         </div>
@@ -122,32 +33,10 @@
                   
                 </div>
             </div>
-            <!-- Newsletter Start -->
             <div id="newsletter">
-                <!-- <div class="container">
-                    <div id="subscribe">
-                      
-                        <form class="form-horizontal" name="subscribe">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-7"> 
-                                    <div class="input-group">
-                                        <span class="news">newsletter</span>
-                                        <p>Stay updated with our instant notifications of Hamara tiffin. You can manage them anytime in your browser settings.</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-5 form-group">
-                                    <div class="input-group">
-                                        <input  value="" name="subscribe_email" id="subscribe_email" placeholder="Email" type="text">
-                                        <button class="btn btn-news" type="submit" value="submit">Send</button>
-                                    </div>
-                                </div>
-                            </div> 
-                        </form>
-                    </div>
-                </div>-->
+                
             </div> 
-            <!-- Newsletter End -->
-            <!-- Footer Start -->
+          
             <footer>
                 <div class="container">
                     <div class="row inner">
@@ -229,7 +118,22 @@
                     </div>
                 </div>
             </footer>
-         
+         <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+              </div>
+              <div class="modal-body">
+                <p style="color: red;"><?php echo @$_REQUEST['msg'];?></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
         </div>
 
@@ -265,97 +169,25 @@
     </script>
     </body>
 </html>
-<?php if(@$_REQUEST['msg']!==''){?>
+<?php if(@$_REQUEST['msg']){?>
 <script type="text/javascript">
-     /* $(document).ready(function () {
-        $('#myModal').load(function () {
-            $('#myModal').modal('show');
-        });
-      });*/
+    $(document).ready(function () {
+         $(window).load(function(){        
+       $('#myModal').modal('show');
+        }); 
+      });
 </script>
 <?php }?>
 
 
 <script>
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the crurrent tab
-
-function showTab(n) {
-  // This function will display the specified tab of the form...
-  var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  //... and run a function that will display the correct step indicator:
-  fixStepIndicator(n)
-}
-
-function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form...
-  if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
-}
-
-function validateForm() {
-  // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
-    // If a field is empty...
-    if (y[i].value == "") {
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false
-      valid = false;
-    }
-  }
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
-  return valid; // return the valid status
-}
-
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class on the current step:
-  x[n].className += " active";
-}
 $(document).ready(function () {
   //called when key is pressed in textbox
-  $("#cus_otp,#mobile").keypress(function (e) {
+  $(".cus_otp,#mobile").keypress(function (e) {
      //if the letter is not digit then display error and don't type anything
      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
-        $("#errorr").html("Digits Only").show().fadeOut("slow");
+        $("#otp").html("Digits Only").show().fadeOut("slow");
                return false;
     }
    });
@@ -431,8 +263,40 @@ $(document).ready(function () {
   };
 } ( jQuery ));
 setTimeout(function(){  
-  $('#addcart').html('<?php echo count($_SESSION["shopping_cart"]);?>'); }, 
-  100);
+  addcarts();
+ },100);
+function addcarts()
+{
+   $('#addcart').html('<?php echo count($_SESSION["shopping_cart"]);?>'); 
+}
+function selectValues(arg)
+{
+  if(arg.length==6)
+  {
+    $.ajax({
+      url: 'order.php',
+      type: 'POST',
+      data: {'check_otp': arg},
+      success : function(result)
+      {
+        console.log(result)
+        if(result==1)
+        {
+          console.log(result)
+          $('#otp').html("<span style='color:green;'>Otp Successfull</span>");
+        }
+        else
+        {
+          console.log(result)
+          $('#otp').html("<span style='color:red;'>Otp did not match!</span>");
+          
+        }
+       
+      }
+    });
+  }
+}
+
 </script>
     </body>
 </html>

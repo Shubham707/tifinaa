@@ -39,27 +39,24 @@ include'config.php';
                     <h6>Shopping Address</h6>	
                      <fieldset> 
                             <div class="form-group">
-                                <input name="mobile"  placeholder="Mobile no" id="input-firstname" class="form-control" type="text" required>
+                                <input name="mobile" onkeyup="selectMobile(this.value);" placeholder="Mobile no" id="mobile" class="form-control" type="text" required maxlength="10">
                             </div>
                             <div class="form-group">
-                                <input name="firstname"  placeholder="First Name" id="input-firstname" class="form-control" type="text" required>
+                                <input name="firstname"  placeholder="First Name" id="firstname" class="form-control" type="text" required>
                             </div>
+                            
                             <div class="form-group">
-                                <input name="lastname"  placeholder="Last Name" id="input-lastname" class="form-control" type="text" required>
+                                <input name="email"  placeholder="Email" id="email" class="form-control" type="text" required>
                             </div>
-                            <div class="form-group">
-                                <input name="email"  placeholder="Email" id="input-email" class="form-control" type="text" required>
-                            </div>
-                            <div class="form-group">
-                                <input name="mobile"  placeholder="Phone Number" id="input-phone" class="form-control" type="text">
-                            </div>
+                            
                              <div class="form-group">
                                 <input name="arrivel_time" value="" placeholder="Arrivel Timing" id="timepicker1" class="form-control" type="text" required>
                             </div>
                            
                                 <input name="quantity" value="<?php echo implode(',',$_POST['quantity'])?>"  class="form-control" type="hidden">
-                                 <input name="total_amount" value="<?php echo $_POST['total_amount']?>"  class="form-control" type="hidden">
-                                <input name="title" value="<?php echo implode(',',$_POST['title'])?>"  class="form-control" type="hidden">
+                                 <input name="total_amount" value="<?php echo $_POST['total_amount']?>"   type="hidden">
+                                <input name="title" value="<?php echo implode(',',$_POST['title'])?>"  type="hidden">
+                           <input name="user_id" id="user_id" value=""   type="hidden">
                            
                             
                         </fieldset>
@@ -71,19 +68,19 @@ include'config.php';
                     <h6>Contact information</h6>
                         <fieldset>  
                             <div class="form-group">
-                                <input name="country"  placeholder="Country" id="input-india" class="form-control" type="text" >
+                                <input name="country"  placeholder="Country" id="country" class="form-control" type="text" >
                             </div>
                             <div class="form-group">
-                                <input name="state"  placeholder="State" id="input-state" class="form-control" type="text">
+                                <input name="state"  placeholder="State" id="state" class="form-control" type="text">
                             </div>
                             <div class="form-group">
-                                <input name="city"  placeholder="City" id="input-City" class="form-control" type="text">
+                                <input name="city"  placeholder="City" id="city" class="form-control" type="text">
                             </div>
                             <div class="form-group">
-                                <input name="zipcode"  placeholder="Zip Code" id="input-code" class="form-control" type="text">
+                                <input name="zipcode"  placeholder="Zip Code" id="zipcode" class="form-control" type="text">
                             </div>
                             <div class="form-group">
-                                <input name="address"  placeholder="Address" id="input-address" class="form-control" type="text">
+                                <input name="address"  placeholder="Address" id="address" class="form-control" type="text">
                             </div>
                         </fieldset>
                    
@@ -151,5 +148,35 @@ include 'footer.php';
             }
             
         }   
+        function selectMobile(mob)
+        {
+        //alert(mob)
+        if(mob.length==10){
+          $.ajax({
+            url: 'order.php',
+            type: 'POST',
+            data: { 'mobiles':mob, 'autofill':'fill' },
+            success: function(data)
+            {
+            if(data)
+            {
+                //console.log('text'+data['cus_id']);
+                $('#firstname').val(data['cus_name']);
+                $('#address').val(data['cus_address']);
+                $('#city').val(data['city']);
+                $('#country').val(data['country']);
+                $('#state').val(data['state']);
+                $('#zipcode').val(data['zipcode']);
+                $('#email').val(data['cus_email']);
+                $('#user_id').val(data['cus_id']);
+            }else{
+               $('#error').html('Please Input All Empty Field!');
+            }
+           },
+           dataType: 'json'
+          });
+         }
+
+        }
     </script>
 

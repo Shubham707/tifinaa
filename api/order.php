@@ -25,7 +25,7 @@ if($data['user_id']!='')
 	 $sql="INSERT INTO `order`(`order_product_name`, `order_price`, `order_total`, `order_mobile`, `order_address`, `product_id`,`user_id`,`arrivel_time`,`sku`) VALUES ('$prod_name','$price','$total','$mobile','$address','$product_id','$user_id','$arrive_time','$rand')";
 	$query=mysqli_query($db,$sql);
 	if($query==1){
-    echo $arr=json_encode(array('status'=>true,'statuscode'=>200,'data'=>'Order save successfully'));
+    echo $arr=json_encode(array('status'=>true,'statuscode'=>200,'data'=>'Order saved successfully'));
 	}
 	else{
 		echo $arr=json_encode(array('status'=>false,'statuscode'=>400,'data'=>'order is not succesfull'));

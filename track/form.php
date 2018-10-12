@@ -5,16 +5,16 @@ include'../config.php';
 //Array ( [mobile] => 324324324 [firstname] => Shubham [lastname] => Verma [email] => pv16061995@gmail.com [arrivel_time] => 06:30 PM [quantity] => 10,6 [total_amount] => 1,360.00 [title] => Basic Thali,Regular Thali [country] => India [state] => Andaman and Nicobar Islands [city] => Delhi [zipcode] => 206001 [address] => Dwarka Mor [submit] => Place Order )
 $R=$_REQUEST;
 $name=$R['firstname'].''.$R['lastname'];
-  echo $sql="INSERT INTO `order`(`order_product_name`, `order_total`, `order_mobile`, `name`,`order_address`, `quantity`, `arrivel_time`, `country`, `state`, `city`, `zipcode`,`cash`) VALUES ('$R[title]','$R[total_amount]','$R[mobile]','$name','$R[address]','$R[quantity]','$R[arrivel_time]','$R[country]','$R[state]','$R[city]','$R[zipcode]','$R[cash]')"; die;
+  echo $sql="INSERT INTO `order`(`order_product_name`, `order_total`, `order_mobile`, `name`,`order_address`, `quantity`, `arrivel_time`, `country`, `state`, `city`, `zipcode`,`user_id`) VALUES ('$R[title]','$R[total_amount]','$R[mobile]','$name','$R[address]','$R[quantity]','$R[arrivel_time]','$R[country]','$R[state]','$R[city]','$R[zipcode]','$R[user_id]')";
     $query=mysqli_query($db,$sql)or die('not connected!');
-	if($query==1){
+/*	if($query==1){
 		ob_start();
 		header('location:../thank-you.php');
 	}
 	else{ 
 		ob_start();
 		header('location:../transactionfail.php');
-	}
+	}*/
 
 
  
@@ -29,10 +29,10 @@ $name=$R['firstname'].''.$R['lastname'];
 <input type="text" value="thank-you.php"    name="return_url"/>
 <input type="text" value="LIVE"           name="mode"/>
 <input type="text" value="465456"       name="order_id"/>
-<input type="text" value="<?php echo $_POST['total']?>"         name="amount"/>
+<input type="text" value="<?php echo $R['total_amount']?>"         name="amount"/>
 <input type="text" value="INR"       name="currency"/>
 <input type="text" value="PAY"    name="description"/>
-<input type="text" value="<?php echo $_POST['firstname'].''.$_POST['lastname'];?>" name="name"/>
+<input type="text" value="<?php echo $R['firstname'].''.$R['lastname'];?>" name="name"/>
 <input type="text" value="<?php echo $_POST['email']?>"          name="email"/>
 <input type="text" value="<?php echo $_POST['mobile']?>"          name="phone"/>
 <input type="text" value="<?php echo $_POST['address']?>" name="address_line_1"/>

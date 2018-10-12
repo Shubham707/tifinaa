@@ -5,17 +5,19 @@
  include'config.php'; 
  if(isset($_POST["add_to_cart"]))  
  {  
-         $id=$_POST["add_to_cart"]; 
+          $id=$_POST["add_to_cart"]; 
           $sql="SELECT * FROM thali WHERE id='$id'";
          $query=mysqli_query($db,$sql) or die('database not connected!');
          $data=mysqli_fetch_assoc($query);
+         $rand='sku-'.rand(99999,55555);
       if(isset($_SESSION["shopping_cart"]))  
       {  
            $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");  
            if(!in_array($_GET["id"], $item_array_id))  
            {  
                 $count = count($_SESSION["shopping_cart"]);  
-                $item_array = array(  
+                    $item_array = array(
+                     'item_sku'               =>     $rand,   
                      'item_id'               =>     $data["id"],  
                      'item_name'               =>     $data["title"],  
                      'item_price'          =>     $data["price"],  
@@ -47,7 +49,7 @@ if(isset($_POST["action"]))
       {  
            foreach($_SESSION["shopping_cart"] as $keys => $values)  
            {  
-                if($values["item_id"] == $_POST["id"])  
+                if($values["item_sku"] == $_POST["id"])  
                 {  
                      unset($_SESSION["shopping_cart"][$keys]);  
                      echo 'Item Removed';  
