@@ -1,5 +1,21 @@
 <?php
 include 'header.php';
+if($_SESSION['log_in']==false){
+    header("Location:logout.php");
+}
+$mob=$_SESSION['user_mobile'];
+if($_POST['mobile']!='')
+{
+   $R=$_REQUEST; 
+  $cus= "UPDATE `customers` SET `cus_name`='$R[firstname]',`cus_address`='$R[address]',`cus_email`='$R[email]',`country`='$R[country]',`state`='$R[state]',`city`='$R[city]',`zipcode`='$R[zipcode]' WHERE cus_mobile='$mob'";
+  $r=mysqli_query($db,$cus) or die(mysqli_error());
+  if($r)
+  {
+    $error="Profile Updated";
+  } else{
+    $error="Profile Not Updated";
+  }
+}
 ?>
 <style >
     .nav-tabs { border-bottom: 2px solid #DDD; }
@@ -58,7 +74,7 @@ include 'header.php';
           <div role="tabpanel" class="tab-pane active" id="profile">
           
             <h4>User Information</h4>
-            
+            <div class="text-center"><?php echo @$error; ?></div>
             <dir class="row">
                 <div class="col-md-10 col-10 col-xs-10">
                 <div class="row">
@@ -81,8 +97,12 @@ include 'header.php';
                             </div>
                            
                             <div class="form-group">
-                                <span>Email Address</span>
+                                <span>Email Id</span>
                                 <input name="email" placeholder="Email" id="input-email" class="form-control" type="text" disabled="disabled" value="<?php echo $data['cus_email'];?>">
+                            </div>
+                            <div class="form-group">
+                                <span> Address</span>
+                                <input name="address" placeholder="Address" id="input-address" class="form-control" type="text" disabled="disabled" value="<?php echo $data['cus_address'];?>">
                             </div>
                     </fieldset>                       
                 </div>
@@ -90,6 +110,10 @@ include 'header.php';
                 <div class="col-lg-5 col-md-6 col-12">
                     <h5>Contact information</h5>
                         <fieldset>  
+                            <div class="form-group">
+                                <span>Country</span>
+                                <input name="country" placeholder="Country" id="input-country" class="form-control" type="text" disabled="disabled" value="<?php echo $data['country'];?>">
+                            </div>
                             <div class="form-group">
                                 <span>State</span>
                                 <input name="state" placeholder="State" id="input-state" class="form-control" type="text" disabled="disabled" value="<?php echo $data['state'];?>">
@@ -102,10 +126,7 @@ include 'header.php';
                                 <span>Zip Code</span>
                                 <input name="zipcode" placeholder="Zip Code" id="input-code" class="form-control" type="text" disabled="disabled" value="<?php echo $data['zipcode'];?>">
                             </div>
-                            <div class="form-group">
-                                <span> Address</span>
-                                <input name="address" placeholder="Address" id="input-address" class="form-control" type="text" disabled="disabled" value="<?php echo $data['cus_address'];?>">
-                            </div>
+                            
                         </fieldset>  
                 </div>
             </div>
@@ -165,63 +186,39 @@ include 'header.php';
                 </table>
             </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="settings">
-              <div class="table-responsive-md">
-                <p class="float-left">Wallet Transcation History</p>
-                <p class="float-right">Add Wallet Balance </p>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <td class="text-center">Hamara Tiffin</td>
-                            <td class="text-center">Price</td>
-                            <td class="text-center">Qty.</td>
-                            <td class="text-center">Status</td>                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>                                
-                                <div class="name">
-                                    <h4>Food Title Here</h4>
-                                    <p>Curses / Dictum / Risus</p>
-                                    
-                                </div>
-                            </td>
-                            <td class="text-center">$ 23.00</td>
-                            <td class="text-center">
-                                <p class="qtypara">                                    
-                                   12                                                                    
-                                </p>
-                            </td>
-                            <td class="text-center">Pending</td>                            
-                        </tr>
-                        <tr>
-                            <td>                               
-                                <div class="name">
-                                    <h4>Food Title Here</h4>
-                                    <p>Curses / Dictum / Risus</p>                                    
-                                </div>
-                            </td>
-                            <td class="text-center">$23.50</td>
-                            <td class="text-center">
-                                <p class="qtypara">                                   
-                                   123                                  
-                                </p>
-                            </td>
-                            <td class="text-center">Delivered</td>                            
-                        </tr>
-                       
-                    </tbody>
-                </table>
+                  <div role="tabpanel" class="tab-pane" id="settings">
+                      <div class="table-responsive-md">
+                        <p class="float-left">Wallet Transcation History</p>
+                        <p class="float-right">Balance: <?php echo $data['balance'];?> </p><br><br>
+                       <div class="row">
+                           <div class="col-md-12">
+                            <div class="col-md-6 col-md-offset-6 text-center">
+                               <form action="addWallet.php" method="post">
+                               <div class="form-group">
+                                  <input type="text" id="balance" class="form-control" name="balance">
+                                  </div>
+                                  <div class="form-group">
+                                  <button type="button" onclick="selectbalance('50')">50</button>
+                                  <button type="button" onclick="selectbalance('100')">100</button>
+                                  <button type="button" onclick="selectbalance('500')">500</button>
+                                  <button type="button" onclick="selectbalance('1000')">1000</button>
+                               </div>
+                                <div class="form-group">
+                                  <input type="submit" class="btn btn-warning" name="submit">
+                               </div>
+                               </form>
+                               </div>
+                           </div>
+                       </div>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="extra">
+                      <h3>Amazing New Features Coming Soon</h3>
+                      <p>We are working on that.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="extra">
-              <h3>Amazing New Features Coming Soon</h3>
-              <p>We are working on that.</p>
-          </div>
-        </div>
-      </div>
-    </div>
                              </div>
 
                               
@@ -280,65 +277,101 @@ include 'header.php';
                           
                         </div>
                         <div class="modal-body">
+                        <form  method="post" action="profile.php"> 
                             <div class="row">
-                <div class="col-lg-5 col-md-6 col-12">
-                   <form 
-                     <fieldset> 
-                            <div class="form-group">                                
-                                <input name="mobile" placeholder="Mobile no" id="input-firstname" class="form-control" type="text" value="<?php echo $_SESSION['user_mobile'];?>">
-                            </div>
-                            <div class="form-group">
-                                <input name="firstname" placeholder="First Name" id="input-firstname" class="form-control" type="text" >
-                            </div>
-                            <div class="form-group">
-                                <input name="address" placeholder="Address" id="input-address" class="form-control" type="text" >
-                            </div>
-                            <div class="form-group">
-                                <input name="email" placeholder="Email" id="input-email" class="form-control" type="text" >
-                            </div>
+                                <div class="col-lg-5 col-md-6 col-12">
+                                        <fieldset> 
+                                            <div class="form-group">         
+                                                <input name="mobile" placeholder="Mobile no" id="mob" class="form-control" type="text" value="<?php echo $_SESSION['user_mobile'];?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="firstname" placeholder="First Name" id="first" class="form-control" type="text" value="<?php echo $data['cus_name'];?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="address" placeholder="Address" id="address" class="form-control" type="text" value="<?php echo $data['cus_address'];?>" >
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="email" placeholder="Email" id="email" class="form-control" type="text" value="<?php echo $data['cus_email'];?>">
+                                            </div>
+                                    </fieldset>
+                                       
+                                </div>
 
-                            
-                    </fieldset>
-                       
-                </div>
-
-                <div class="col-lg-1 d-none d-lg-block"></div>
-                <div class="col-lg-5 col-md-6 col-12">
-                   
+                        <div class="col-lg-1 d-none d-lg-block"></div>
+                        <div class="col-lg-5 col-md-6 col-12">
                         <fieldset>  
                         <div class="form-group">
-                                <input name="country" placeholder="Country" id="input-country" class="form-control" type="text" >
+                                <input name="country" placeholder="Country" id="input-country" class="form-control" type="text" value="India">
                             </div>
                             <div class="form-group">
-                                <input name="state" placeholder="State" id="input-state" class="form-control" type="text" >
+                                <select name="state" placeholder="State" id="input-state" class="form-control" onchange="selectCity(this.value)">
+                                <option><?php echo $data['state'];?></option>
+                                 <option>Select State</option>
+                                <?php 
+                            
+                                 $city="SELECT DISTINCT `city_state` FROM `cities`";
+                                 $result1=mysqli_query($db,$city) or die('database not connected!');
+                                while($data1=mysqli_fetch_assoc($result1)){
+                                    ?>
+                                <option><?php echo $data1['city_state'];?></option>
+                                <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group" id="city_disp">
+                               <select name="city" placeholder="City" id="input-city" class="form-control" >
+                                <option><?php echo $data['city'];?></option>
+                                 <option>Select City</option>
+                                <?php 
+                            
+                                 $city="SELECT DISTINCT * FROM `cities`";
+                                 $result1=mysqli_query($db,$city) or die('database not connected!');
+                                while($data1=mysqli_fetch_assoc($result1)){
+                                    ?>
+                                <option><?php echo $data1['city_name'];?></option>
+                                <?php }?>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <input name="city" placeholder="City" id="input-City" class="form-control" type="text" >
-                            </div>
-                            <div class="form-group">
-                                <input name="zipcode" placeholder="Zip Code" id="input-code" class="form-control" type="text" >
+                                <input name="zipcode" placeholder="Zip Code" id="input-code" class="form-control" type="text" value="<?php echo $data['zipcode'];?>">
                             </div>
                             
                         </fieldset>
                    
                         <div class="form-group row col-sm-4">
-                </div>
-                   
-                </div>
-                    <div class="buttons float-right">
-                     <input type="submit" class="btn btn-theme btn-md btn-wide" name="submit" value="Save Profile">
-                    </div>               
-                 
-            </div>
-
-                          
-                        </div>
+                    </div>
                        
                     </div>
-                  
-                </div>
-            </div>
+                    <div class="buttons float-right">
+                     <input type="submit" class="btn btn-theme btn-md btn-wide" name="submit" value="Save Profile">
+                    </div>  
+                    </form>
+            </div>           
+        </div>
+       
+    </div>
   
-  <?php
-include 'footer.php';
-?>
+</div>
+</div>
+  
+  <?php include 'footer.php';?>
+<script type="text/javascript">
+  /*  function selectCity(arg)
+    {
+
+        $.ajax({
+            url: 'order.php',
+            type: 'POST',
+            data: {'city': arg},
+            success:function(resp)
+            {
+                console.log(arg)
+                $('#city_disp').html(resp);
+            }
+        });
+        
+    }*/
+    function selectbalance(arg)
+    {
+        $('#balance').val(arg);
+    }
+</script>

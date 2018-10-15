@@ -12,6 +12,7 @@ $row = mysqli_fetch_assoc($resultset);
 if($row['cus_mobile']==$user_password){
   
    $_SESSION['user_mobile'] = $row['cus_mobile'];
+   $_SESSION['log_in'] == true;
    header("location:profile.php");
 } else {
 	header("location:index.php?msg=Otp or mobile does not exist."); 

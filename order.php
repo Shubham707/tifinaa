@@ -112,4 +112,14 @@ if($_REQUEST['check_otp'])
 		echo "errors";
 	}*/
 }
+/*if($_REQUEST['city']){
+	 echo $otp=$_REQUEST['city'];
+	 echo $sql="SELECT * FROM `cities` WHERE city_state='$otp'"; 
+    $query=mysqli_query($db, $sql) or die(mysqli_error());
+    //echo '<select id="input-City" class="form-control">';
+    while($data=mysqli_fetch_assoc($query)){
+    	echo '<option value="'.$data['city_name'].'">'.$data['city_name'].'</option>';
+	}
+	echo '</select>';
+}*/
 ?>
