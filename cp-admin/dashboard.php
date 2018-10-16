@@ -1,6 +1,6 @@
 <?php include'header.php';
 include'../config.php';
-$order1="SELECT MONTH(`created_at`) AS date, SUM(`quantity`) AS total_sales, count(`quantity`) AS total_count, sum(`order_total`) AS total_price FROM `order` GROUP BY date";
+ $order1="SELECT MONTH(`created_date`) AS date, SUM(`total_product`) AS total_sales, count(`total_product`) AS total_count, sum(`total_amount`) AS total_price FROM `orders` GROUP BY date";
  $orders1=mysqli_query($db,$order1) or die('database not connected!');
 $data2=mysqli_fetch_assoc($orders1);   
 ?>
@@ -26,9 +26,9 @@ $data2=mysqli_fetch_assoc($orders1);
                     <i class="fas fa-fw fa-comments"></i>
                   </div>
                   <?php
-                  $Cus="SELECT count(`cus_id`) AS total_id FROM `customers`";
+                 $Cus="SELECT count(`cus_id`) AS total_id FROM `customers`";
                     $Cust=mysqli_query($db,$Cus) or die('database not connected!');
-                    $data3=mysqli_fetch_assoc($Cust);  
+                    $data3=mysqli_fetch_assoc($Cust); 
                   ?>
                   <div class="mr-5">(<?php echo $data3['total_id']?>) User</div>
                 </div>
@@ -62,8 +62,8 @@ $data2=mysqli_fetch_assoc($orders1);
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                   </div>
-                  <?php $order="SELECT count(deliver_start) as total FROM `order` WHERE deliver_start='0'";
-                  $orders=mysqli_query($db,$order) or die();
+                  <?php $order="SELECT count(delivery_status) as total FROM `orders` WHERE delivery_status='0'";
+                  $orders=mysqli_query($db,$order) or die('not connected orders list');
                   $data=mysqli_fetch_assoc($orders);
                   ?>
                   <div class="mr-5">(<?php echo $data['total'];?>) New Orders!</div>

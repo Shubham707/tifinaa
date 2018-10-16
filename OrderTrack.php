@@ -1,6 +1,12 @@
 <?php
 include 'header.php';
+include 'config.php';
 ?>
+<style>
+    .progress-step.is-complete .progress-marker {
+    background-color: #0e8608 !important;
+}
+</style>
  <link rel="stylesheet" href="app/styles/site.css">
     <link rel="stylesheet" href="app/styles/progress-tracker.css">
 
@@ -30,27 +36,54 @@ include 'header.php';
         <h2>Order</h2>
 
         <h3>Track</h3>
-
+        <?php 
+         $id=$_POST['track'];
+         $sql="SELECT * FROM `orders` WHERE order_no='$id'";
+        $query=mysqli_query($db,$sql) or die('database not connect deliver record');
+        $res=mysqli_fetch_assoc($query);
+            $val=$res['delivery_status'];
+        ?>
+        
         <ul class="progress-tracker">
+        
           <li class="progress-step is-complete">
             <span class="progress-marker"></span>Order
           </li>
-
+          
+          <?php  if( $val == 0){?>
           <li class="progress-step is-complete">
             <span class="progress-marker"></span>Payment
           </li>
-
-          <li class="progress-step is-active">
-            <span class="progress-marker"></span>Packed
+          <?php }else{ ?>
+          <li class="progress-step">
+            <span class="progress-marker"></span>Payment
           </li>
 
+          <?php } if($val == 1){?>
+          <li class="progress-step is-complete">
+            <span class="progress-marker"></span>Packed
+          </li>
+          <?php $res['delivery_status']; }else{ ?>
+          <li class="progress-step">
+            <span class="progress-marker"></span>Packed
+          </li>
+          <?php } if($val == 2){?>
+          <li class="progress-step is-complete">
+            <span class="progress-marker"></span>Shipped
+          </li>
+          <?php }else{ ?>
           <li class="progress-step">
             <span class="progress-marker"></span>Shipped
           </li>
-
+          <?php } if($val == 3){?>
+         <li class="progress-step is-complete">
+            <span class="progress-marker"></span>Delivered
+          </li>
+          <?php }else{ ?>
           <li class="progress-step">
             <span class="progress-marker"></span>Delivered
           </li>
+          <?php } ?>
         </ul>
 
       </div>

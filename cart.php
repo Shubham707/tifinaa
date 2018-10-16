@@ -58,5 +58,9 @@ if(isset($_POST["action"]))
            }  
       }  
  } 
+ if(isset($_POST['check_CART']))
+ {
+  echo count($_SESSION["shopping_cart"]);
+ }
 
  ?>  

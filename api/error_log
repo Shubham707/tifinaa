@@ -517,3 +517,87 @@
 [13-Oct-2018 11:44:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/login.php:1) in /home/hamaratiffin/public_html/api/login.php on line 7
 [13-Oct-2018 13:40:13 UTC] PHP Notice:  Undefined offset: 3 in /home/hamaratiffin/public_html/api/newlogin.php on line 8
 [13-Oct-2018 13:40:43 UTC] PHP Notice:  Undefined offset: 3 in /home/hamaratiffin/public_html/api/newlogin.php on line 8
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  include(): Failed opening 'controls.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 233
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 234
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 235
+[15-Oct-2018 11:46:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 236
+[15-Oct-2018 11:46:08 UTC] PHP Fatal error:  Uncaught Error: Class 'sqlfunction' not found in /home/hamaratiffin/public_html/api/newlogin.php:245
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(14): customerdetailbymobile()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 245
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  include(): Failed opening 'controls.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 233
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 234
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 235
+[15-Oct-2018 11:59:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 236
+[15-Oct-2018 11:59:02 UTC] PHP Fatal error:  Uncaught Error: Class 'sqlfunction' not found in /home/hamaratiffin/public_html/api/newlogin.php:245
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(14): customerdetailbymobile()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 245
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  include(): Failed opening 'controls.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 233
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 234
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 235
+[15-Oct-2018 11:59:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 236
+[15-Oct-2018 11:59:12 UTC] PHP Fatal error:  Uncaught Error: Class 'sqlfunction' not found in /home/hamaratiffin/public_html/api/newlogin.php:245
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(14): customerdetailbymobile()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 245
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  include(controls.php): failed to open stream: No such file or directory in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  include(): Failed opening 'controls.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hamaratiffin/public_html/api/newlogin.php on line 3
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 233
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 234
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 235
+[15-Oct-2018 11:59:24 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/hamaratiffin/public_html/api/newlogin.php:3) in /home/hamaratiffin/public_html/api/newlogin.php on line 236
+[15-Oct-2018 11:59:24 UTC] PHP Fatal error:  Uncaught Error: Class 'sqlfunction' not found in /home/hamaratiffin/public_html/api/newlogin.php:245
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(14): customerdetailbymobile()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 245
+[16-Oct-2018 06:56:22 UTC] PHP Notice:  Trying to get property of non-object in /home/hamaratiffin/public_html/api/newlogin.php on line 256
+[16-Oct-2018 06:56:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/hamaratiffin/public_html/api/newlogin.php:257
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(26): getproductsbycat()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 257
+[16-Oct-2018 06:56:56 UTC] PHP Notice:  Trying to get property of non-object in /home/hamaratiffin/public_html/api/newlogin.php on line 256
+[16-Oct-2018 06:56:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/hamaratiffin/public_html/api/newlogin.php:257
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(26): getproductsbycat()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 257
+[16-Oct-2018 06:57:26 UTC] PHP Notice:  Trying to get property of non-object in /home/hamaratiffin/public_html/api/newlogin.php on line 256
+[16-Oct-2018 06:57:26 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/hamaratiffin/public_html/api/newlogin.php:257
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(26): getproductsbycat()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 257
+[16-Oct-2018 06:58:16 UTC] PHP Notice:  Trying to get property of non-object in /home/hamaratiffin/public_html/api/newlogin.php on line 256
+[16-Oct-2018 06:58:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/hamaratiffin/public_html/api/newlogin.php:257
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(26): getproductsbycat()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 257
+[16-Oct-2018 06:59:10 UTC] PHP Notice:  Trying to get property of non-object in /home/hamaratiffin/public_html/api/newlogin.php on line 256
+[16-Oct-2018 06:59:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/hamaratiffin/public_html/api/newlogin.php:257
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(26): getproductsbycat()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 257
+[16-Oct-2018 06:59:27 UTC] PHP Notice:  Trying to get property of non-object in /home/hamaratiffin/public_html/api/newlogin.php on line 256
+[16-Oct-2018 06:59:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/hamaratiffin/public_html/api/newlogin.php:257
+Stack trace:
+#0 /home/hamaratiffin/public_html/api/newlogin.php(26): getproductsbycat()
+#1 {main}
+  thrown in /home/hamaratiffin/public_html/api/newlogin.php on line 257

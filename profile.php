@@ -1,13 +1,15 @@
 <?php
+session_start();
+
 include 'header.php';
-if($_SESSION['log_in']==false){
+if($_SESSION['log_in']!=true){
     header("Location:logout.php");
 }
 $mob=$_SESSION['user_mobile'];
-if($_POST['mobile']!='')
+if(@$_POST['mobile']!='')
 {
    $R=$_REQUEST; 
-  $cus= "UPDATE `customers` SET `cus_name`='$R[firstname]',`cus_address`='$R[address]',`cus_email`='$R[email]',`country`='$R[country]',`state`='$R[state]',`city`='$R[city]',`zipcode`='$R[zipcode]' WHERE cus_mobile='$mob'";
+  $cus= "UPDATE `customers` SET `cus_name`='$R[firstname]',`cus_mobile`='$R[mobile]',`cus_address`='$R[address]',`cus_email`='$R[email]',`country`='$R[country]',`state`='$R[state]',`city`='$R[city]',`zipcode`='$R[zipcode]' WHERE cus_mobile='$mob'";
   $r=mysqli_query($db,$cus) or die(mysqli_error());
   if($r)
   {
@@ -65,7 +67,7 @@ if($_POST['mobile']!='')
           <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>Profile</span></a></li>
           <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>Order History</span></a></li>
           <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Wallet</span></a></li>
-          <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-plus-square-o"></i>  <span>Coming Soon</span></a></li>
+          <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-plus-square-o"></i>  <span>Transaction</span></a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -146,39 +148,31 @@ if($_POST['mobile']!='')
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <td class="text-center">Wallet</td>
+                            <td class="text-center">Thali Address</td>
                             <td class="text-center">Total Price</td>
                             <td class="text-center">Qty.</td>
+                            <td>Time Arrivel</td>
                             <td class="text-center">Status</td>                           
                         </tr>
                     </thead>
                     <tbody>
                      <?php 
-                    $mob=$_SESSION['user_mobile'];
-                     $order="SELECT * FROM `order` WHERE order_mobile='$mob'";
+                   $mob=$_SESSION['user_mobile'];
+                     $order="SELECT * FROM `orders` WHERE user_mobile='$mob'";
                     $orders=mysqli_query($db,$order) or die('database not connected!');
                     while($ord_rec=mysqli_fetch_assoc($orders)){
                     ?>
                         <tr>
-                            <td>                                
-                                <div class="name">
-                                    <h4><?php echo $ord_rec['order_product_name'];?></h4>
-                                    <p><?php echo $ord_rec['order_product_name'];?></p>
-                                    
-                                </div>
-                            </td>
-                            <td class="text-center"><?php echo $ord_rec['order_total'];?></td>
+                            <td>  <?php echo $ord_rec['address'];?></td>
+                            <td class="text-center"><?php echo $ord_rec['total_amount'];?></td>
+                            <td class="text-center">  <?php echo $ord_rec['total_product'];?> </td>
+                            <td><?php echo $ord_rec['delivery_time'];?></td>
                             <td class="text-center">
-                                <p class="qtypara">                                    
-                                  <?php echo $ord_rec['quantity'];?>                                                                     
-                                </p>
-                            </td>
-                            <td class="text-center">
-                               <?php if($ord_rec['confirmation']==1)
+                               <?php if($ord_rec['quantity']==1)
                                {  
-                                echo "Confirm"; } else { echo "Pending"; } ?>
-                                    
-                                </td>                            
+                               echo "Confirm"; } else { echo "Pending"; } 
+                               ?>    
+                            </td>                            
                         </tr>
                         
                       <?php }?> 
@@ -193,9 +187,10 @@ if($_POST['mobile']!='')
                        <div class="row">
                            <div class="col-md-12">
                             <div class="col-md-6 col-md-offset-6 text-center">
-                               <form action="addWallet.php" method="post">
+                               <form action="track/form.php" method="post">
                                <div class="form-group">
                                   <input type="text" id="balance" class="form-control" name="balance">
+                                   <input type="hidden" class="form-control" name="mobile" value="<?php echo $_SESSION['user_mobile'];?>">
                                   </div>
                                   <div class="form-group">
                                   <button type="button" onclick="selectbalance('50')">50</button>
@@ -213,8 +208,40 @@ if($_POST['mobile']!='')
                     </div>
                   </div>
                   <div role="tabpanel" class="tab-pane" id="extra">
-                      <h3>Amazing New Features Coming Soon</h3>
-                      <p>We are working on that.</p>
+                      <h3>Transaction Details</h3>
+                      <div class="table-responsive-md">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="text-center">Mobile</td>
+                            <td class="text-center">Transaction Id</td>
+                            <td class="text-center">Amount</td>
+                            <td>Pay Type</td>
+                            <td class="text-center">Date and Time</td>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <?php 
+                   $mob=$_SESSION['user_mobile'];
+                     $order1="SELECT * FROM `transaction` WHERE mobile='$mob'";
+                    $orders1=mysqli_query($db,$order1) or die('database not connected!');
+                    while($t=mysqli_fetch_assoc($orders1)){
+                    ?>
+                        <tr>
+                            <td>  <?php echo $t['mobile'];?></td>
+                            <td class="text-center"><?php echo $t['trans_id'];?></td>
+                            <td class="text-center">  <?php echo $t['amount'];?> </td>
+                            <td><?php echo $t['pay_type'];?></td>
+                            <td class="text-center">
+                               <?php echo $t['created_date'];
+                               ?>    
+                            </td>                            
+                        </tr>
+                        
+                      <?php }?> 
+                    </tbody>
+                </table>
+            </div>
                   </div>
                 </div>
               </div>
@@ -355,21 +382,7 @@ if($_POST['mobile']!='')
   
   <?php include 'footer.php';?>
 <script type="text/javascript">
-  /*  function selectCity(arg)
-    {
-
-        $.ajax({
-            url: 'order.php',
-            type: 'POST',
-            data: {'city': arg},
-            success:function(resp)
-            {
-                console.log(arg)
-                $('#city_disp').html(resp);
-            }
-        });
-        
-    }*/
+ 
     function selectbalance(arg)
     {
         $('#balance').val(arg);
