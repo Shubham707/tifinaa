@@ -32,7 +32,7 @@ $data2=mysqli_fetch_assoc($orders1);
                   ?>
                   <div class="mr-5">(<?php echo $data3['total_id']?>) User</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="users.php">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>

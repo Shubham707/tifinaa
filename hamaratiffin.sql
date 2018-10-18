@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 16, 2018 at 04:37 PM
+-- Generation Time: Oct 18, 2018 at 05:27 PM
 -- Server version: 5.7.23-0ubuntu0.16.04.1
 -- PHP Version: 7.1.20-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -1575,7 +1575,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`cus_id`, `cus_name`, `cus_address`, `cus_email`, `password`, `cus_mobile`, `cus_otp`, `cus_order`, `spacial`, `medium`, `basic`, `cus_date`, `booking_time`, `country`, `state`, `city`, `balance`, `superbalance`, `zipcode`, `otp_status`, `cus_created`) VALUES
-(201, 'Shubham', 'Dwarka Mor', 'pv16061995@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', '8585916263', '327316', NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Maharashtra', 'Kolhapur', 2820.00, 810.00, '206001', 0, '2018-10-05 06:46:47');
+(201, 'Shubham', 'Dwarka Mor', 'pv16061995@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', '8585916263', '337791', NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Maharashtra', 'Kolhapur', 2820.00, 810.00, '206001', 0, '2018-10-05 06:46:47');
 
 -- --------------------------------------------------------
 

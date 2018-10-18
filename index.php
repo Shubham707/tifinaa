@@ -285,6 +285,7 @@ include 'footer.php';
 $("form#myform").submit(function(e) {
   e.preventDefault();
     var mobile = $('#mobile').val();
+    $('#empModal').modal('show');
     $.ajax({
            type: "POST",
            url: 'order.php',
@@ -294,7 +295,7 @@ $("form#myform").submit(function(e) {
             if(res=='success')
             {
               $('#empModal').modal('show');
-              console.log('error')
+             
             }else{
                alert('Mobile no is wrong');
             }

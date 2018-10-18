@@ -1,12 +1,12 @@
 <?php
-session_start();
-
+ini_set('display_errors',1);
 include 'header.php';
-if($_SESSION['log_in']!=true){
+if(!isset($_SESSION['user_mobile'])){
     header("Location:logout.php");
 }
 $mob=$_SESSION['user_mobile'];
-if(@$_POST['mobile']!='')
+
+if(isset($_POST['mobile']))
 {
    $R=$_REQUEST; 
   $cus= "UPDATE `customers` SET `cus_name`='$R[firstname]',`cus_mobile`='$R[mobile]',`cus_address`='$R[address]',`cus_email`='$R[email]',`country`='$R[country]',`state`='$R[state]',`city`='$R[city]',`zipcode`='$R[zipcode]' WHERE cus_mobile='$mob'";
